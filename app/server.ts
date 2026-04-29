@@ -5,16 +5,22 @@ import { z } from 'zod'
 import { rootView } from './root-view'
 import { createUser, findUser, listUsers } from './data'
 
+/**
+ * ユーザー情報入力時のスキーマ
+ */
 const userInput = z.object({
   name: z.string().min(1, 'Name is required'),
   email: z.email('Invalid email'),
   bio: z.string().max(200, 'Bio must be 200 characters or less').optional().default('')
 })
 
+// Honoクライアントインスタンスを生成
 const app = new Hono()
 
+// ミドルウェアを適用
 app.use(inertia({ rootView }))
 
+// ルーティングの設定
 const routes = app
   .get('/', (c) => c.render('Home', { message: 'Hono x Inertia' }))
   .get('/users', (c) => c.render('Users/Index', { users: listUsers() }))
@@ -26,6 +32,7 @@ const routes = app
   )
   .get('/users/:id{[0-9]+}', (c) => {
     const id = Number(c.req.param('id'))
+    // ユーザー検索
     const user = findUser(id)
     if (!user) return c.notFound()
     return c.render('Users/Show', { user })
@@ -51,7 +58,9 @@ const routes = app
       }
     }),
     (c) => {
+      // 入力データを取得
       const input = c.req.valid('form')
+      // ユーザーを新規作成
       const user = createUser(input)
       return c.redirect(`/users/${user.id}`, 303)
     }

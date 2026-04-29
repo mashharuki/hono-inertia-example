@@ -3,6 +3,7 @@ import type { PageProps } from '../../pages.gen'
 import Layout from '../Layout'
 
 export default function UsersNew({ values, errors }: PageProps<'Users/New'>) {
+  // フォーム
   const form = useForm({
     name: values?.name ?? '',
     email: values?.email ?? '',

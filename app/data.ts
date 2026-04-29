@@ -13,10 +13,13 @@ const users: User[] = [
 
 let nextId = users.length + 1
 
+// ユーザー一覧を返すメソッド
 export const listUsers = (): User[] => users
 
+// 特定のユーザーを検索するメソッド
 export const findUser = (id: number): User | undefined => users.find((u) => u.id === id)
 
+// ユーザーを作成するメソッド
 export const createUser = (input: Omit<User, 'id'>): User => {
   const user: User = { id: nextId++, ...input }
   users.push(user)

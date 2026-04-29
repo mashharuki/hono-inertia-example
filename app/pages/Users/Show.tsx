@@ -2,6 +2,11 @@ import { Head, Link } from '@inertiajs/react'
 import type { PageProps } from '../../pages.gen'
 import Layout from '../Layout'
 
+/**
+ * UsersShow コンポーネント
+ * @param param0 
+ * @returns 
+ */
 export default function UsersShow({ user }: PageProps<'Users/Show'>) {
   return (
     <Layout>

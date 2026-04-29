@@ -2,6 +2,11 @@ import { Head, Link } from '@inertiajs/react'
 import type { PageProps } from '../../pages.gen'
 import Layout from '../Layout'
 
+/**
+ * UsersIndexコンポーネント
+ * @param param0 
+ * @returns 
+ */
 export default function UsersIndex({ users }: PageProps<'Users/Index'>) {
   return (
     <Layout>

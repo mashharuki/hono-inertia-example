@@ -2,6 +2,11 @@ import { renderToString } from 'react-dom/server'
 import { Link, Script, ViteClient } from 'vite-ssr-components/react'
 import { serializePage, type PageObject, type RootView } from '@hono/inertia'
 
+/**
+ * ルートビュー
+ * @param param0 
+ * @returns 
+ */
 const Document = ({ page }: { page: PageObject }) => (
   <html>
     <head>
